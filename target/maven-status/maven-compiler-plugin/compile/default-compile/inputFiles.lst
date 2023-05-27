@@ -1,1 +1,12 @@
-/Users/wesleygomesmonteiro/NetBeansProjects/projeto_integrador_loja_informatica/src/main/java/Codigos_Fonte/projeto/lojaInformatica/view/FormCliente.java
+/Users/wesleygomesmonteiro/Documents/workspace/Projeto_PI_Loja_Informatica/src/main/java/Codigos_Fonte/projeto/lojaInformatica/dao/FornecedorDAO.java
+/Users/wesleygomesmonteiro/Documents/workspace/Projeto_PI_Loja_Informatica/src/main/java/Codigos_Fonte/projeto/lojaInformatica/jdbc/ConnectionFactory.java
+/Users/wesleygomesmonteiro/Documents/workspace/Projeto_PI_Loja_Informatica/src/main/java/Codigos_Fonte/projeto/lojaInformatica/model/dao.java
+/Users/wesleygomesmonteiro/Documents/workspace/Projeto_PI_Loja_Informatica/src/main/java/Codigos_Fonte/projeto/lojaInformatica/view/TelaInicial.java
+/Users/wesleygomesmonteiro/Documents/workspace/Projeto_PI_Loja_Informatica/src/main/java/Codigos_Fonte/projeto/lojaInformatica/view/FormFornecedor.java
+/Users/wesleygomesmonteiro/Documents/workspace/Projeto_PI_Loja_Informatica/src/main/java/Codigos_Fonte/projeto/lojaInformatica/dao/ClientesDAO.java
+/Users/wesleygomesmonteiro/Documents/workspace/Projeto_PI_Loja_Informatica/src/main/java/Codigos_Fonte/projeto/lojaInformatica/model/Clientes.java
+/Users/wesleygomesmonteiro/Documents/workspace/Projeto_PI_Loja_Informatica/src/main/java/Codigos_Fonte/projeto/lojaInformatica/model/Utilitarios.java
+/Users/wesleygomesmonteiro/Documents/workspace/Projeto_PI_Loja_Informatica/src/main/java/Codigos_Fonte/projeto/lojaInformatica/view/FormCliente.java
+/Users/wesleygomesmonteiro/Documents/workspace/Projeto_PI_Loja_Informatica/src/main/java/Codigos_Fonte/projeto/lojaInformatica/model/Fornecedor.java
+/Users/wesleygomesmonteiro/Documents/workspace/Projeto_PI_Loja_Informatica/src/main/java/Codigos_Fonte/projeto/lojaInformatica/model/WebServiceCep.java
+/Users/wesleygomesmonteiro/Documents/workspace/Projeto_PI_Loja_Informatica/src/main/java/Codigos_Fonte/projeto/lojaInformatica/jdbc/TesteConexao.java

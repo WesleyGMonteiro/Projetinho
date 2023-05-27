@@ -16,7 +16,7 @@ public class ConnectionFactory {
     
     public Connection getConnection() throws SQLException, ClassNotFoundException{
     try{
-        return DriverManager.getConnection("jdbc:mysql://127.0.0.1/bdvendas?useTimezone=true&serverTimezone=UTC&useSSL=false","USUARIOCURSO","123"); 
+        return DriverManager.getConnection("jdbc:mysql://127.0.0.1/bdvendas?allowPublicKeyRetrieval=true&useTimezone=true&serverTimezone=UTC&useSSL=false","USUARIOCHEFE","123"); 
   }catch(RuntimeException e){
         throw new RuntimeException(e);     
   }

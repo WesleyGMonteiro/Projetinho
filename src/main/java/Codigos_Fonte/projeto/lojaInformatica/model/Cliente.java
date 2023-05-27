@@ -8,7 +8,7 @@ package Codigos_Fonte.projeto.lojaInformatica.model;
  *
  * @author wesleygomesmonteiro
  */
-public class Clientes {
+public class Cliente {
     private int id;
     private String nome;
     private String sobrenome;

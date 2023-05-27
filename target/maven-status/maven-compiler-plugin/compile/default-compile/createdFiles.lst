@@ -1,2 +1,4 @@
-Codigos_Fonte/projeto/lojaInformatica/view/FormCliente.class
-Codigos_Fonte/projeto/lojaInformatica/view/FormCliente$1.class
+Codigos_Fonte/projeto/lojaInformatica/dao/ClientesDAO.class
+Codigos_Fonte/projeto/lojaInformatica/view/dao.class
+Codigos_Fonte/projeto/lojaInformatica/model/Clientes.class
+Codigos_Fonte/projeto/lojaInformatica/jdbc/ConnectionFactory.class

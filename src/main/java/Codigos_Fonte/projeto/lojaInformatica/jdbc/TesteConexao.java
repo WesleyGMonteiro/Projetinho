@@ -19,7 +19,7 @@ public class TesteConexao {
         try {
             
             new ConnectionFactory().getConnection();
-            JOptionPane.showMessageDialog(null, "Conectado com SUICO");
+            JOptionPane.showMessageDialog(null, "Conectado com Su SEXO");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
