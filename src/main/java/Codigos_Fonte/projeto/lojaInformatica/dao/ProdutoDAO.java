@@ -176,4 +176,104 @@ public class ProdutoDAO {
             return null;
         }    
     }
+    
+    public Produto buscaProdutoCodigo(int id){
+        
+        try {
+            
+            // 1 Passo criar Lista
+            List<Produto> lista = new ArrayList<>();
+            
+            // 2 Passo - Criar o sql, organizar e executar
+            String sql = "select * from tb_produtos where id = ?";
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setInt(1, id);
+            ResultSet rs = stm.executeQuery();
+            Produto obj = new Produto();
+            
+            if(rs.next()){
+                
+                obj.setId(rs.getInt("id"));
+                obj.setDescricao(rs.getString("descricao"));
+                obj.setPreco(rs.getDouble("preco"));
+                obj.setQtd_estoque(rs.getInt("qtd_estoque"));
+                
+                
+            }
+            
+            return obj;
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            return null;
+        }    
+    }
+    
+    // Método Baixar Estoque
+    public void baixarEstoque(int id, int qtd_nova){
+        try {
+            
+            String sql = "update tb_produtos set qtd_estoque=? where id=?";
+            
+            PreparedStatement stm = con.prepareStatement(sql);
+            
+            stm.setInt(1, qtd_nova);
+            stm.setInt(2, id);
+            stm.execute();
+            stm.close();
+            
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    // Método Baixar Estoque
+    public void adicionarEstoque(int id, int qtd_nova){
+        try {
+            
+            String sql = "update tb_produtos set qtd_estoque=? where id=?";
+            
+            PreparedStatement stm = con.prepareStatement(sql);
+            
+            stm.setInt(1, qtd_nova);
+            stm.setInt(2, id);
+            stm.execute();
+            stm.close();
+            
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    // Retorna Estoque Atual
+    public int retornaEstoqueAtual(int id){
+        
+        try {
+            
+            int qtd_estoque = 0;
+            
+            String sql = "Select qtd_estoque from tb_produtos where id=?";
+            
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setInt(1, id);
+            
+            ResultSet rs = stm.executeQuery();
+            
+            if(rs.next()){
+                Produto p = new Produto();
+                
+                qtd_estoque = (rs.getInt("qtd_estoque"));
+            }
+            return qtd_estoque;
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e);
+            return 0;
+        } 
+    }
 }

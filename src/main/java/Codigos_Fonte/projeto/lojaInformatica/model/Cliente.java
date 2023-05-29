@@ -4,6 +4,8 @@
  */
 package Codigos_Fonte.projeto.lojaInformatica.model;
 
+import java.util.Date;
+
 /**
  *
  * @author wesleygomesmonteiro
@@ -25,6 +27,8 @@ public class Cliente {
     private String bairro;
     private String cidade;
     private String estado;
+    private Date nascimento;
+    private Date cadastro_cliente;
 
     public int getId() {
         return id;
@@ -153,7 +157,22 @@ public class Cliente {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
+
+    public Date getNascimento() {
+        return nascimento;
+    }
+
+    public void setNascimento(Date nascimento) {
+        this.nascimento = nascimento;
+    }
+
+    public Date getCadastro_cliente() {
+        return cadastro_cliente;
+    }
+
+    public void setCadastro_cliente(Date cadastro_cliente) {
+        this.cadastro_cliente = cadastro_cliente;
+    }
     
     
 }

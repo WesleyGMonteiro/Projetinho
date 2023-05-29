@@ -38,32 +38,32 @@ public class ClienteDAO {
         try {
             
             //1 Passo - Criar comando SQL
-            String sql = "insert into tb_clientes(nome, sobrenome, sexo, rg, cpf, email, celular, "
+            String sql = "insert into tb_clientes(nome, sobrenome, sexo, nascimento, rg, cpf, email, celular, "
                     + "celular2, cep, endereco, numero, complemento, bairro, cidade, estado) "
-                    + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            
             
             //2 Passo - Conectar ao banco de dados e organizar o comando SQL
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setString(1, obj.getNome());
             stm.setString(2, obj.getSobrenome());
             stm.setString(3,obj.getSexo());
-            stm.setString(4, obj.getRg());
-            stm.setString(5, obj.getCpf());
-            stm.setString(6, obj.getEmail());
-            stm.setString(7, obj.getCelular());
-            stm.setString(8, obj.getCelular2());
-            stm.setString(9, obj.getCep());
-            stm.setString(10, obj.getEndereco());
-            stm.setInt(11, obj.getNumero());
-            stm.setString(12, obj.getComplemento());
-            stm.setString(13, obj.getBairro());
-            stm.setString(14, obj.getCidade());
-            stm.setString(15, obj.getEstado());
-            
-            //3 Passo - Executar o comando sql
+            stm.setDate(4, new java.sql.Date(obj.getNascimento().getTime()));
+            stm.setString(5, obj.getRg());
+            stm.setString(6, obj.getCpf());
+            stm.setString(7, obj.getEmail());
+            stm.setString(8, obj.getCelular());
+            stm.setString(9, obj.getCelular2());
+            stm.setString(10, obj.getCep());
+            stm.setString(11, obj.getEndereco());
+            stm.setInt(12, obj.getNumero());
+            stm.setString(13, obj.getComplemento());
+            stm.setString(14, obj.getBairro());
+            stm.setString(15, obj.getCidade());
+            stm.setString(16, obj.getEstado());
             stm.execute();
             stm.close();
-            
+
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
             
         } catch (SQLException e) {
@@ -77,7 +77,7 @@ public class ClienteDAO {
         try {
             
             //1 Passo - Criar comando SQL
-            String sql = "update tb_clientes set nome=?, sobrenome=?, sexo=?, rg=?, cpf=?, email=?, celular=?, "
+            String sql = "update tb_clientes set nome=?, sobrenome=?, sexo=?, nascimento=?, rg=?, cpf=?, email=?, celular=?, "
                     + "celular2=?, cep=?, endereco=?, numero=?, complemento=?, bairro=?, cidade=?, estado=? where id=?";
             
             //2 Passo - Conectar ao banco de dados e organizar o comando SQL
@@ -85,26 +85,27 @@ public class ClienteDAO {
             stm.setString(1, obj.getNome());
             stm.setString(2, obj.getSobrenome());
             stm.setString(3,obj.getSexo());
-            stm.setString(4, obj.getRg());
-            stm.setString(5, obj.getCpf());
-            stm.setString(6, obj.getEmail());
-            stm.setString(7, obj.getCelular());
-            stm.setString(8, obj.getCelular2());
-            stm.setString(9, obj.getCep());
-            stm.setString(10, obj.getEndereco());
-            stm.setInt(11, obj.getNumero());
-            stm.setString(12, obj.getComplemento());
-            stm.setString(13, obj.getBairro());
-            stm.setString(14, obj.getCidade());
-            stm.setString(15, obj.getEstado());
-            stm.setInt(16, obj.getId());
-            
+            stm.setDate(4, new java.sql.Date(obj.getNascimento().getTime()));
+            stm.setString(5, obj.getRg());
+            stm.setString(6, obj.getCpf());
+            stm.setString(7, obj.getEmail());
+            stm.setString(8, obj.getCelular());
+            stm.setString(9, obj.getCelular2());
+            stm.setString(10, obj.getCep());
+            stm.setString(11, obj.getEndereco());
+            stm.setInt(12, obj.getNumero());
+            stm.setString(13, obj.getComplemento());
+            stm.setString(14, obj.getBairro());
+            stm.setString(15, obj.getCidade());
+            stm.setString(16, obj.getEstado());
+            stm.setInt(17, obj.getId());
+
             //3 Passo - Executar o comando sql
             stm.execute();
             stm.close();
-            
+
             JOptionPane.showMessageDialog(null, "Alterado com sucesso");
-            
+                
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro: " + e);
         }
@@ -156,6 +157,7 @@ public class ClienteDAO {
                 obj.setNome(rs.getString("nome"));
                 obj.setSobrenome(rs.getString("sobrenome"));
                 obj.setSexo(rs.getString("sexo"));
+                obj.setNascimento(rs.getDate("nascimento"));
                 obj.setRg(rs.getString("rg"));
                 obj.setCpf(rs.getString("cpf"));
                 obj.setEmail(rs.getString("email"));

@@ -9,10 +9,13 @@ import Codigos_Fonte.projeto.lojaInformatica.dao.ProdutoDAO;
 import Codigos_Fonte.projeto.lojaInformatica.model.Fornecedor;
 import Codigos_Fonte.projeto.lojaInformatica.model.Produto;
 import Codigos_Fonte.projeto.lojaInformatica.model.Utilitario;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -93,10 +96,10 @@ public class FormProduto extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -136,7 +139,7 @@ public class FormProduto extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        painelCadastroProdutos.setBackground(new java.awt.Color(255, 255, 255));
+        painelCadastroProdutos.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -151,7 +154,7 @@ public class FormProduto extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Descrição");
 
-        txtDescricao.setBackground(new java.awt.Color(204, 204, 204));
+        txtDescricao.setBackground(new java.awt.Color(255, 255, 255));
         txtDescricao.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         txtDescricao.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -159,9 +162,14 @@ public class FormProduto extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Preço:");
 
-        txtPreco.setBackground(new java.awt.Color(204, 204, 204));
+        txtPreco.setBackground(new java.awt.Color(255, 255, 255));
         txtPreco.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         txtPreco.setForeground(new java.awt.Color(0, 0, 0));
+        txtPreco.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecoKeyTyped(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
@@ -171,11 +179,16 @@ public class FormProduto extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Fornecedor:");
 
-        txtQtdEstoque.setBackground(new java.awt.Color(204, 204, 204));
+        txtQtdEstoque.setBackground(new java.awt.Color(255, 255, 255));
         txtQtdEstoque.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         txtQtdEstoque.setForeground(new java.awt.Color(0, 0, 0));
+        txtQtdEstoque.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQtdEstoqueKeyTyped(evt);
+            }
+        });
 
-        cmbFornecedores.setBackground(new java.awt.Color(204, 204, 204));
+        cmbFornecedores.setBackground(new java.awt.Color(255, 255, 255));
         cmbFornecedores.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         cmbFornecedores.setForeground(new java.awt.Color(0, 0, 0));
         cmbFornecedores.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -248,13 +261,13 @@ public class FormProduto extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Dados do Produtos", painelCadastroProdutos);
 
-        painelConsultaProdutos.setBackground(new java.awt.Color(255, 255, 255));
+        painelConsultaProdutos.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel17.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Descrição:");
 
-        txtPesquisa.setBackground(new java.awt.Color(204, 204, 204));
+        txtPesquisa.setBackground(new java.awt.Color(255, 255, 255));
         txtPesquisa.setForeground(new java.awt.Color(0, 0, 0));
 
         btnPesquisa.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -387,6 +400,11 @@ public class FormProduto extends javax.swing.JFrame {
 
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fornecedor (2).png"))); // NOI18N
         jMenuItem3.setText("Controle de Fornecedores");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
 
         jMenuBar1.add(jMenu2);
@@ -395,9 +413,19 @@ public class FormProduto extends javax.swing.JFrame {
         jMenu6.setText("Produtos");
 
         jMenuItem2.setText("Controle de Estoque");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem2);
 
         jMenuItem5.setText("Consulta de Produtos");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem5);
 
         jMenuBar1.add(jMenu6);
@@ -406,19 +434,38 @@ public class FormProduto extends javax.swing.JFrame {
         jMenu4.setText("Vendas");
 
         jMenuItem6.setText("Abrir Ponto de Vendas");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem6);
 
         jMenuItem4.setText("Relatório de Vendas");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem4);
+
+        jMenuItem1.setText("Valor total por período");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem1);
 
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/configuracoes.png"))); // NOI18N
-        jMenu5.setText("Configurações");
-        jMenuBar1.add(jMenu5);
-
         jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sair.png"))); // NOI18N
         jMenu7.setText("Sair");
+        jMenu7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu7MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu7);
 
         setJMenuBar(jMenuBar1);
@@ -469,22 +516,27 @@ public class FormProduto extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // Botão Salvar
-        
+            
             Produto obj = new Produto();
-            obj.setDescricao(txtDescricao.getText());
-            obj.setPreco(Double.parseDouble(txtPreco.getText()));
-            obj.setQtd_estoque(Integer.parseInt(txtQtdEstoque.getText()));
-            
-            
-            //Criar objeto de Fornecedor
-            Fornecedor f = new Fornecedor();
-            f = (Fornecedor) cmbFornecedores.getSelectedItem();
-            obj.setFornecedor(f);
-            
-            ProdutoDAO dao = new ProdutoDAO();
-            dao.cadastrar(obj);
-            
-        new Utilitario().limpaTela(painelCadastroProdutos);
+            if(txtDescricao.getText().isEmpty() || txtPreco.getText().isEmpty() || txtQtdEstoque.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Preencha todos campos obrigatórios marcados com *");
+            }
+            else{
+                obj.setDescricao(txtDescricao.getText());
+                obj.setPreco(Double.parseDouble(txtPreco.getText()));
+                obj.setQtd_estoque(Integer.parseInt(txtQtdEstoque.getText()));
+                
+                //Criar objeto de Fornecedor
+                Fornecedor f = new Fornecedor();
+                f = (Fornecedor) cmbFornecedores.getSelectedItem();
+                obj.setFornecedor(f);
+
+                
+                ProdutoDAO dao = new ProdutoDAO();
+                dao.cadastrar(obj);
+                
+                new Utilitario().limpaTela(painelCadastroProdutos);
+            }
         
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -512,9 +564,13 @@ public class FormProduto extends javax.swing.JFrame {
         
            Produto obj = new Produto();
            obj.setId(Integer.parseInt(txtCodigo.getText()));
-           obj.setDescricao(txtDescricao.getText());
-           obj.setPreco(Double.parseDouble(txtPreco.getText()));
-           obj.setQtd_estoque(Integer.parseInt(txtQtdEstoque.getText()));
+           if(txtDescricao.getText().isEmpty() || txtPreco.getText().isEmpty() || txtQtdEstoque.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Preencha todos campos obrigatórios marcados com *");
+            }
+           else{
+             obj.setDescricao(txtDescricao.getText());
+            obj.setPreco(Double.parseDouble(txtPreco.getText()));
+            obj.setQtd_estoque(Integer.parseInt(txtQtdEstoque.getText()));
            
             
             
@@ -527,7 +583,9 @@ public class FormProduto extends javax.swing.JFrame {
             daop.alterar(obj);
         
         
-        new Utilitario().limpaTela(painelCadastroProdutos);
+            new Utilitario().limpaTela(painelCadastroProdutos);  
+           }
+           
         
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -595,17 +653,109 @@ public class FormProduto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cmbFornecedoresAncestorAdded
 
+    private void txtPrecoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecoKeyTyped
+        // Validação Apenas numeros
+        
+        char validar = evt.getKeyChar();
+        
+        if ((Character.isLetter(validar) && (validar != KeyEvent.VK_SPACE)) && (validar != KeyEvent.VK_BACK_SPACE)){
+            getToolkit().beep();
+            evt.consume();
+            
+            JOptionPane.showMessageDialog(null, "Digite apenas numeros");
+        }
+    }//GEN-LAST:event_txtPrecoKeyTyped
+
+    private void txtQtdEstoqueKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQtdEstoqueKeyTyped
+        // Validação Apenas numeros
+        
+        char validar = evt.getKeyChar();
+        
+        if ((Character.isLetter(validar) && (validar != KeyEvent.VK_SPACE)) && (validar != KeyEvent.VK_BACK_SPACE)){
+            getToolkit().beep();
+            evt.consume();
+            
+            JOptionPane.showMessageDialog(null, "Digite apenas numeros");
+        }
+    }//GEN-LAST:event_txtQtdEstoqueKeyTyped
+
     private void mniNovoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniNovoClienteActionPerformed
-        new FormCliente().setVisible(true);
+        FormCliente telaCliente = new FormCliente();
+        telaCliente.jTabbedPane1.setSelectedIndex(0);
+        telaCliente.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_mniNovoClienteActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        new FormCliente().setVisible(true);
+        FormCliente telaCliente = new FormCliente();
+        telaCliente.jTabbedPane1.setSelectedIndex(1);
+        telaCliente.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void mniNovoFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniNovoFornecedorActionPerformed
-        new FormFornecedor().setVisible(true);
+        // Novo Fornecedor
+
+        FormFornecedor telaFornecedor = new FormFornecedor();
+        telaFornecedor.jTabbedPane1.setSelectedIndex(0);
+        telaFornecedor.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_mniNovoFornecedorActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // Consultar Fornecedor
+
+        FormFornecedor telaFornecedor = new FormFornecedor();
+        telaFornecedor.jTabbedPane1.setSelectedIndex(1);
+        telaFornecedor.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // Tela Cadastro Produtos
+
+        FormProduto tela = new FormProduto();
+        tela.jTabbedPane1.setSelectedIndex(0);
+        tela.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // Tela Consulta Produtos
+
+        FormProduto tela = new FormProduto();
+        tela.jTabbedPane1.setSelectedIndex(1);
+        tela.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // Abrir Ponto de Vendas
+
+        PontoDeVenda telaPontoDeVenda = new PontoDeVenda();
+        telaPontoDeVenda.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // Relatório de Vendas
+
+        FormRelatorioVenda telaDetalheVendas = new FormRelatorioVenda();
+        telaDetalheVendas.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // Valor total de vendas por período
+
+        FormTotalVendaPorData telaDetalheVendas = new FormTotalVendaPorData();
+        telaDetalheVendas.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
+        this.dispose();
+    }//GEN-LAST:event_jMenu7MouseClicked
 
     /**
      * @param args the command line arguments
@@ -661,10 +811,10 @@ public class FormProduto extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -673,7 +823,7 @@ public class FormProduto extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    public javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JMenuItem mniNovoCliente;
     private javax.swing.JMenuItem mniNovoFornecedor;
     private javax.swing.JPanel painelCadastroProdutos;
