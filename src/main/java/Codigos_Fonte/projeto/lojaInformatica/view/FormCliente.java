@@ -756,6 +756,7 @@ public class FormCliente extends javax.swing.JFrame {
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produtos.png"))); // NOI18N
         jMenu6.setText("Produtos");
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacotes.png"))); // NOI18N
         jMenuItem2.setText("Controle de Estoque");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -764,6 +765,7 @@ public class FormCliente extends javax.swing.JFrame {
         });
         jMenu6.add(jMenuItem2);
 
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lupa.png"))); // NOI18N
         jMenuItem5.setText("Consulta de Produtos");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -777,6 +779,7 @@ public class FormCliente extends javax.swing.JFrame {
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vendas.png"))); // NOI18N
         jMenu4.setText("Vendas");
 
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/etiqueta-de-preco.png"))); // NOI18N
         jMenuItem6.setText("Abrir Ponto de Vendas");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -785,6 +788,7 @@ public class FormCliente extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem6);
 
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/relatorio (1).png"))); // NOI18N
         jMenuItem4.setText("Relatório de Vendas");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -793,6 +797,7 @@ public class FormCliente extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem4);
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pagamentos.png"))); // NOI18N
         jMenuItem1.setText("Valor total por período");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -860,13 +865,10 @@ public class FormCliente extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // Botão Salvar
-        
+            
             Cliente obj = new Cliente();
             if(txtNome.getText().isEmpty() || txtSobrenome.getText().isEmpty() || txtCPF.getText().isEmpty() || txtRG.getText().isEmpty() || 
                     txtEmail.getText().isEmpty() || txtEndereco.getText().isEmpty() || txtNumero.getText().isEmpty() || txtBairro.getText().isEmpty() || txtCidade.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null, "Você precisa preencher os campos obrigatórios");
-            }
-            else if(cmbSexo.getSelectedItem().toString().isEmpty() || cmbEstado.getSelectedItem().toString().isEmpty()){
                 JOptionPane.showMessageDialog(null, "Você precisa preencher os campos obrigatórios");
             }
             else{
@@ -889,8 +891,14 @@ public class FormCliente extends javax.swing.JFrame {
 
                 
                 ClienteDAO dao = new ClienteDAO();
-                dao.cadastrarCliente(obj);
-                new Utilitario().limpaTela(painelCadastroClientes);
+                Cliente cpfCadastrados = dao.consultaPorCpf(obj.getCpf());
+                if(obj.getCpf().equals(cpfCadastrados.getCpf())){
+                    JOptionPane.showMessageDialog(null, "Esse CPF já está cadastrado");
+                }
+                else{
+                    dao.cadastrarCliente(obj);
+                    new Utilitario().limpaTela(painelCadastroClientes);
+                }
             }
         
     }//GEN-LAST:event_btnSalvarActionPerformed

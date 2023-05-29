@@ -5,15 +5,12 @@
 package Codigos_Fonte.projeto.lojaInformatica.dao;
 
 import Codigos_Fonte.projeto.lojaInformatica.jdbc.ConnectionFactory;
-import Codigos_Fonte.projeto.lojaInformatica.model.Cliente;
 import Codigos_Fonte.projeto.lojaInformatica.model.ItemVenda;
 import Codigos_Fonte.projeto.lojaInformatica.model.Produto;
-import Codigos_Fonte.projeto.lojaInformatica.model.Venda;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;

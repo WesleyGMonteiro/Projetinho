@@ -5,6 +5,7 @@
 package Codigos_Fonte.projeto.lojaInformatica.model;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -173,6 +174,29 @@ public class Cliente {
     public void setCadastro_cliente(Date cadastro_cliente) {
         this.cadastro_cliente = cadastro_cliente;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 31 * hash + Objects.hashCode(this.cpf);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this.cpf == obj.toString()) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cliente other = (Cliente) obj;
+        return Objects.equals(this.cpf, other.cpf);
+    }
+    
     
     
 }

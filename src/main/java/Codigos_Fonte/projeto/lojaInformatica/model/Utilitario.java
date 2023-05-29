@@ -4,9 +4,12 @@
  */
 package Codigos_Fonte.projeto.lojaInformatica.model;
 
+import com.toedter.calendar.JDayChooser;
 import java.awt.Component;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.xml.crypto.Data;
 
 /**
  *
@@ -19,6 +22,12 @@ public class Utilitario {
         for(Component component : components){
             if(component instanceof JTextField){
                 ((JTextField)component).setText(null);
+            }
+            if(component instanceof JDayChooser){
+                ((JDayChooser)component).setCalendar(null);
+            }
+            if(component instanceof JComboBox){
+                ((JComboBox)component).setSelectedItem(null);
             }
         }
     }

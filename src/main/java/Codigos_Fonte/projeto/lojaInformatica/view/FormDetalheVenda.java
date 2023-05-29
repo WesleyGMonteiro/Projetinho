@@ -236,6 +236,7 @@ public class FormDetalheVenda extends javax.swing.JFrame {
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produtos.png"))); // NOI18N
         jMenu6.setText("Produtos");
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacotes.png"))); // NOI18N
         jMenuItem2.setText("Controle de Estoque");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,6 +245,7 @@ public class FormDetalheVenda extends javax.swing.JFrame {
         });
         jMenu6.add(jMenuItem2);
 
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lupa.png"))); // NOI18N
         jMenuItem5.setText("Consulta de Produtos");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,6 +259,7 @@ public class FormDetalheVenda extends javax.swing.JFrame {
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vendas.png"))); // NOI18N
         jMenu4.setText("Vendas");
 
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/etiqueta-de-preco.png"))); // NOI18N
         jMenuItem6.setText("Abrir Ponto de Vendas");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -265,6 +268,7 @@ public class FormDetalheVenda extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem6);
 
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/relatorio (1).png"))); // NOI18N
         jMenuItem4.setText("Relatório de Vendas");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,6 +277,7 @@ public class FormDetalheVenda extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem4);
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pagamentos.png"))); // NOI18N
         jMenuItem1.setText("Valor total por período");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

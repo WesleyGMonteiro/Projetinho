@@ -21,7 +21,6 @@ Codigos_Fonte/projeto/lojaInformatica/view/FormFornecedor$8.class
 Codigos_Fonte/projeto/lojaInformatica/view/FormFornecedor$11.class
 Codigos_Fonte/projeto/lojaInformatica/model/WebServicesCep.class
 Codigos_Fonte/projeto/lojaInformatica/view/FormCliente$20.class
-Codigos_Fonte/projeto/lojaInformatica/model/Validacao.class
 Codigos_Fonte/projeto/lojaInformatica/view/PontoDeVenda$7.class
 Codigos_Fonte/projeto/lojaInformatica/view/PontoDeVenda$11.class
 Codigos_Fonte/projeto/lojaInformatica/view/Dao.class
@@ -71,6 +70,7 @@ Codigos_Fonte/projeto/lojaInformatica/view/FormDetalheVenda$4.class
 Codigos_Fonte/projeto/lojaInformatica/view/TelaInicial$12.class
 Codigos_Fonte/projeto/lojaInformatica/view/FormCliente$7.class
 Codigos_Fonte/projeto/lojaInformatica/model/WebServicesCep$XmlEnums.class
+Codigos_Fonte/projeto/lojaInformatica/view/PontoDeVenda$18.class
 Codigos_Fonte/projeto/lojaInformatica/view/FormDetalheVenda$2.class
 Codigos_Fonte/projeto/lojaInformatica/view/FormPagamento$3.class
 Codigos_Fonte/projeto/lojaInformatica/view/FormProduto$9.class
@@ -82,6 +82,7 @@ Codigos_Fonte/projeto/lojaInformatica/model/WebServicesCep$Xml$3.class
 Codigos_Fonte/projeto/lojaInformatica/view/FormProduto$19.class
 Codigos_Fonte/projeto/lojaInformatica/model/WebServicesCep$Xml$4.class
 Codigos_Fonte/projeto/lojaInformatica/model/WebServicesCep$IterableElement.class
+Codigos_Fonte/projeto/lojaInformatica/view/PontoDeVenda$19.class
 Codigos_Fonte/projeto/lojaInformatica/view/FormTotalVendaPorData$2.class
 Codigos_Fonte/projeto/lojaInformatica/view/FormRelatorioVenda$10.class
 Codigos_Fonte/projeto/lojaInformatica/view/FormRelatorioVenda$9.class
@@ -105,6 +106,7 @@ Codigos_Fonte/projeto/lojaInformatica/view/FormControleEstoque$2.class
 Codigos_Fonte/projeto/lojaInformatica/view/FormProduto$1.class
 Codigos_Fonte/projeto/lojaInformatica/view/FormCliente$2.class
 Codigos_Fonte/projeto/lojaInformatica/view/FormProduto$12.class
+Codigos_Fonte/projeto/lojaInformatica/view/PontoDeVenda$20.class
 Codigos_Fonte/projeto/lojaInformatica/view/FormProduto$7.class
 Codigos_Fonte/projeto/lojaInformatica/view/FormProduto$20.class
 Codigos_Fonte/projeto/lojaInformatica/view/FormFornecedor$14.class

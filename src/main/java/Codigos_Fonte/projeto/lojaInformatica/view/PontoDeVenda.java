@@ -8,9 +8,11 @@ import Codigos_Fonte.projeto.lojaInformatica.dao.ClienteDAO;
 import Codigos_Fonte.projeto.lojaInformatica.dao.ProdutoDAO;
 import Codigos_Fonte.projeto.lojaInformatica.model.Cliente;
 import Codigos_Fonte.projeto.lojaInformatica.model.Produto;
+import Codigos_Fonte.projeto.lojaInformatica.model.Utilitario;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -22,7 +24,7 @@ public class PontoDeVenda extends javax.swing.JFrame {
 
     Cliente objc = new Cliente();
     double total, preco, subtotal;
-    int qtd;
+    int qtd, idVendaItem;
     
     DefaultTableModel carrinho;
     /**
@@ -62,6 +64,7 @@ public class PontoDeVenda extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         btnBuscaProduto = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
+        txtApagarItem = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbItens = new javax.swing.JTable();
@@ -108,7 +111,7 @@ public class PontoDeVenda extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(929, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,7 +188,7 @@ public class PontoDeVenda extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(60, 60, 60)
                                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                         .addComponent(btnBuscaCliente)
                         .addGap(110, 110, 110))))
         );
@@ -256,6 +259,13 @@ public class PontoDeVenda extends javax.swing.JFrame {
             }
         });
 
+        txtApagarItem.setText("Apagar Item");
+        txtApagarItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApagarItemActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -268,6 +278,11 @@ public class PontoDeVenda extends javax.swing.JFrame {
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(txtApagarItem, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -283,10 +298,6 @@ public class PontoDeVenda extends javax.swing.JFrame {
                                 .addComponent(btnBuscaProduto))
                             .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(223, Short.MAX_VALUE)
-                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 220, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,9 +317,11 @@ public class PontoDeVenda extends javax.swing.JFrame {
                     .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(txtQtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtApagarItem, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
@@ -320,9 +333,14 @@ public class PontoDeVenda extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Produto", "Quantidade", "Preço", "Subtotal"
+                "Código", "Produto", "Quantidade", "Preço", "Subtotal", "IdItemVenda"
             }
         ));
+        tbItens.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbItensMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbItens);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -331,7 +349,7 @@ public class PontoDeVenda extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -382,6 +400,11 @@ public class PontoDeVenda extends javax.swing.JFrame {
         });
 
         btnCancelar.setText("CANCELAR VENDA");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clientes.png"))); // NOI18N
         jMenu1.setText("Clientes");
@@ -432,6 +455,7 @@ public class PontoDeVenda extends javax.swing.JFrame {
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produtos.png"))); // NOI18N
         jMenu6.setText("Produtos");
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacotes.png"))); // NOI18N
         jMenuItem2.setText("Controle de Estoque");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -440,6 +464,7 @@ public class PontoDeVenda extends javax.swing.JFrame {
         });
         jMenu6.add(jMenuItem2);
 
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lupa.png"))); // NOI18N
         jMenuItem5.setText("Consulta de Produtos");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -453,6 +478,7 @@ public class PontoDeVenda extends javax.swing.JFrame {
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vendas.png"))); // NOI18N
         jMenu4.setText("Vendas");
 
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/etiqueta-de-preco.png"))); // NOI18N
         jMenuItem6.setText("Abrir Ponto de Vendas");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -461,6 +487,7 @@ public class PontoDeVenda extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem6);
 
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/relatorio (1).png"))); // NOI18N
         jMenuItem4.setText("Relatório de Vendas");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -469,6 +496,7 @@ public class PontoDeVenda extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem4);
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pagamentos.png"))); // NOI18N
         jMenuItem1.setText("Valor total por período");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -495,50 +523,49 @@ public class PontoDeVenda extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(167, 167, 167))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(btnPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnPagamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 18, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        
+        this.setExtendedState(MAXIMIZED_BOTH);
+        this.setVisible(true);
         // CARREGA A DATA ATUAL DO SISTEMA
         Date agora = new Date();
         
@@ -585,7 +612,7 @@ public class PontoDeVenda extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // Botão adicionar ao carrinho
-        
+        int qtd_atual = 0;
         qtd = Integer.parseInt(txtQtd.getText());
         preco = Double.parseDouble(txtPreco.getText());
         
@@ -595,16 +622,31 @@ public class PontoDeVenda extends javax.swing.JFrame {
         
         txtTotal.setText(String.valueOf(total));
         
-        //Adicionar Venda na tabela
-        carrinho = (DefaultTableModel)tbItens.getModel();
+        ProdutoDAO daoproduct = new ProdutoDAO();
+        int qtd_Estoque = daoproduct.retornaEstoqueAtual(Integer.parseInt(txtCodigo.getText()));
+        qtd_atual += qtd_Estoque;
         
-        carrinho.addRow(new Object[]{
-           txtCodigo.getText(),
+        if(qtd > qtd_Estoque){
+           JOptionPane.showMessageDialog(null, "Estoque insulficiente para venda");
+           
+        }
+        else{
+            //Adicionar Venda na tabela
+            carrinho = (DefaultTableModel)tbItens.getModel();
+        
+            carrinho.addRow(new Object[]{
+            txtCodigo.getText(),
             txtDescricao.getText(),
             txtQtd.getText(),
             txtPreco.getText(),
-            subtotal
-        });
+            subtotal,
+            idVendaItem++
+            }); 
+            
+            qtd_atual -= qtd;
+            
+            new Utilitario().limpaTela(jPanel3);
+        }
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagamentoActionPerformed
@@ -618,6 +660,50 @@ public class PontoDeVenda extends javax.swing.JFrame {
         this.dispose();
                
     }//GEN-LAST:event_btnPagamentoActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // Cancelar venda
+        
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void txtApagarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApagarItemActionPerformed
+        // Botão apagar o carrinho
+        qtd = Integer.parseInt(txtQtd.getText());
+        
+        ProdutoDAO daoproduct = new ProdutoDAO();
+        int qtd_Estoque = daoproduct.retornaEstoqueAtual(Integer.parseInt(txtCodigo.getText()));
+        
+        if(qtd == qtd ){
+            System.out.println("Para aqui?");
+           //Remover Item da tabela
+            carrinho = (DefaultTableModel)tbItens.getModel();
+            System.out.println("Para aqui?");
+            carrinho.removeRow(tbItens.getSelectedRow());
+            System.out.println("Para aqui?");
+            subtotal = qtd * preco;
+
+            total -= subtotal;
+
+            txtTotal.setText(String.valueOf(total));
+
+//            daoproduct.adicionarEstoque(Integer.parseInt(txtCodigo.getText()), qtd_Estoque);
+
+            new Utilitario().limpaTela(jPanel3); 
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Você não pode excluir antes de adicionar");
+        }
+    }//GEN-LAST:event_txtApagarItemActionPerformed
+
+    private void tbItensMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbItensMouseClicked
+        // Selecionar item
+
+        txtCodigo.setText(tbItens.getValueAt(tbItens.getSelectedRow(), 0).toString());
+        txtDescricao.setText(tbItens.getValueAt(tbItens.getSelectedRow(), 1).toString());
+        txtQtd.setText(tbItens.getValueAt(tbItens.getSelectedRow(), 2).toString());
+        txtPreco.setText(tbItens.getValueAt(tbItens.getSelectedRow(), 3).toString());
+        
+    }//GEN-LAST:event_tbItensMouseClicked
 
     private void mniNovoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniNovoClienteActionPerformed
         FormCliente telaCliente = new FormCliente();
@@ -769,6 +855,7 @@ public class PontoDeVenda extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniNovoCliente;
     private javax.swing.JMenuItem mniNovoFornecedor;
     private javax.swing.JTable tbItens;
+    private javax.swing.JButton txtApagarItem;
     private javax.swing.JFormattedTextField txtCPF;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDataAtual;
