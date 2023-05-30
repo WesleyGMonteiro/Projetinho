@@ -182,9 +182,24 @@ public class Cliente {
         return hash;
     }
 
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (this.cpf == obj.toString()) {
+//            return true;
+//        }
+//        if (obj == null) {
+//            return false;
+//        }
+//        if (getClass() != obj.getClass()) {
+//            return false;
+//        }
+//        final Cliente other = (Cliente) obj;
+//        return Objects.equals(this.cpf, other.cpf);
+//    }
+
     @Override
     public boolean equals(Object obj) {
-        if (this.cpf == obj.toString()) {
+        if (this == obj) {
             return true;
         }
         if (obj == null) {
@@ -194,8 +209,60 @@ public class Cliente {
             return false;
         }
         final Cliente other = (Cliente) obj;
-        return Objects.equals(this.cpf, other.cpf);
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.numero != other.numero) {
+            return false;
+        }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.sobrenome, other.sobrenome)) {
+            return false;
+        }
+        if (!Objects.equals(this.sexo, other.sexo)) {
+            return false;
+        }
+        if (!Objects.equals(this.rg, other.rg)) {
+            return false;
+        }
+        if (!Objects.equals(this.cpf, other.cpf)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.celular, other.celular)) {
+            return false;
+        }
+        if (!Objects.equals(this.celular2, other.celular2)) {
+            return false;
+        }
+        if (!Objects.equals(this.cep, other.cep)) {
+            return false;
+        }
+        if (!Objects.equals(this.endereco, other.endereco)) {
+            return false;
+        }
+        if (!Objects.equals(this.complemento, other.complemento)) {
+            return false;
+        }
+        if (!Objects.equals(this.bairro, other.bairro)) {
+            return false;
+        }
+        if (!Objects.equals(this.cidade, other.cidade)) {
+            return false;
+        }
+        if (!Objects.equals(this.estado, other.estado)) {
+            return false;
+        }
+        if (!Objects.equals(this.nascimento, other.nascimento)) {
+            return false;
+        }
+        return Objects.equals(this.cadastro_cliente, other.cadastro_cliente);
     }
+    
     
     
     

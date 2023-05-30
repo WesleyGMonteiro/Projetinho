@@ -79,7 +79,7 @@ public class FormFornecedor extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtCelular = new javax.swing.JFormattedTextField();
+        txtTelefone = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
         txtCelular2 = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -123,6 +123,7 @@ public class FormFornecedor extends javax.swing.JFrame {
         jMenu6 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -182,7 +183,7 @@ public class FormFornecedor extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Nome:");
+        jLabel3.setText("*Nome:");
 
         txtNome.setBackground(new java.awt.Color(255, 255, 255));
         txtNome.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
@@ -190,7 +191,7 @@ public class FormFornecedor extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("E-mail:");
+        jLabel4.setText("*E-mail:");
 
         txtEmail.setBackground(new java.awt.Color(255, 255, 255));
         txtEmail.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
@@ -198,12 +199,12 @@ public class FormFornecedor extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Telefone:");
+        jLabel5.setText("*Telefone:");
 
-        txtCelular.setBackground(new java.awt.Color(255, 255, 255));
-        txtCelular.setForeground(new java.awt.Color(0, 0, 0));
+        txtTelefone.setBackground(new java.awt.Color(255, 255, 255));
+        txtTelefone.setForeground(new java.awt.Color(0, 0, 0));
         try {
-            txtCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
+            txtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -226,7 +227,7 @@ public class FormFornecedor extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Endereço:");
+        jLabel8.setText("*Endereço:");
 
         txtEndereco.setBackground(new java.awt.Color(255, 255, 255));
         txtEndereco.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
@@ -239,7 +240,7 @@ public class FormFornecedor extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Número:");
+        jLabel9.setText("*Número:");
 
         txtNumero.setBackground(new java.awt.Color(255, 255, 255));
         txtNumero.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
@@ -252,7 +253,7 @@ public class FormFornecedor extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("Bairro:");
+        jLabel10.setText("*Bairro:");
 
         txtBairro.setBackground(new java.awt.Color(255, 255, 255));
         txtBairro.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
@@ -265,7 +266,7 @@ public class FormFornecedor extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setText("Cidade:");
+        jLabel11.setText("*Cidade:");
 
         txtCidade.setBackground(new java.awt.Color(255, 255, 255));
         txtCidade.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
@@ -300,7 +301,7 @@ public class FormFornecedor extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setText("CNPJ:");
+        jLabel14.setText("*CNPJ:");
 
         txtCNPJ.setBackground(new java.awt.Color(255, 255, 255));
         txtCNPJ.setForeground(new java.awt.Color(0, 0, 0));
@@ -346,31 +347,31 @@ public class FormFornecedor extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(painelCadastroFornecedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelCadastroFornecedoresLayout.createSequentialGroup()
-                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(painelCadastroFornecedoresLayout.createSequentialGroup()
                                 .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1092, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1097, Short.MAX_VALUE))))
                     .addGroup(painelCadastroFornecedoresLayout.createSequentialGroup()
                         .addGroup(painelCadastroFornecedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelCadastroFornecedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel14))
-                        .addGap(6, 6, 6)
-                        .addGroup(painelCadastroFornecedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(painelCadastroFornecedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelCadastroFornecedoresLayout.createSequentialGroup()
                                 .addGroup(painelCadastroFornecedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(painelCadastroFornecedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(txtCEP, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                                    .addComponent(txtCEP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(painelCadastroFornecedoresLayout.createSequentialGroup()
+                                        .addGap(24, 24, 24)
+                                        .addGroup(painelCadastroFornecedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(89, 89, 89)
                                 .addGroup(painelCadastroFornecedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCadastroFornecedoresLayout.createSequentialGroup()
                                         .addComponent(jLabel11)
@@ -382,9 +383,12 @@ public class FormFornecedor extends javax.swing.JFrame {
                                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(painelCadastroFornecedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtCelular, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(txtEndereco, javax.swing.GroupLayout.Alignment.TRAILING))))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                                            .addComponent(txtTelefone, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(txtEndereco, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                            .addGroup(painelCadastroFornecedoresLayout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                         .addGroup(painelCadastroFornecedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(painelCadastroFornecedoresLayout.createSequentialGroup()
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -402,12 +406,12 @@ public class FormFornecedor extends javax.swing.JFrame {
                                 .addGroup(painelCadastroFornecedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtComplemento, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txtCelular2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         painelCadastroFornecedoresLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtCelular2, txtComplemento});
 
-        painelCadastroFornecedoresLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtBairro, txtCEP, txtCNPJ, txtCelular, txtCidade, txtEmail, txtEndereco});
+        painelCadastroFornecedoresLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtBairro, txtCEP, txtCNPJ, txtCidade, txtEmail, txtEndereco, txtTelefone});
 
         painelCadastroFornecedoresLayout.setVerticalGroup(
             painelCadastroFornecedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -438,7 +442,7 @@ public class FormFornecedor extends javax.swing.JFrame {
                             .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(painelCadastroFornecedoresLayout.createSequentialGroup()
                         .addGroup(painelCadastroFornecedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCelular2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
@@ -467,7 +471,7 @@ public class FormFornecedor extends javax.swing.JFrame {
 
         painelCadastroFornecedoresLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtBairro, txtCEP, txtCNPJ, txtCodigo, txtEmail, txtNome});
 
-        painelCadastroFornecedoresLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtCelular, txtCidade, txtEndereco});
+        painelCadastroFornecedoresLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtCidade, txtEndereco, txtTelefone});
 
         jTabbedPane1.addTab("Dados Pessoais", painelCadastroFornecedores);
 
@@ -653,7 +657,7 @@ public class FormFornecedor extends javax.swing.JFrame {
         jMenu6.setText("Produtos");
 
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacotes.png"))); // NOI18N
-        jMenuItem2.setText("Controle de Estoque");
+        jMenuItem2.setText("Cadastrar Produto");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -669,6 +673,15 @@ public class FormFornecedor extends javax.swing.JFrame {
             }
         });
         jMenu6.add(jMenuItem5);
+
+        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacotes.png"))); // NOI18N
+        jMenuItem8.setText("Controle de Estoque");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem8);
 
         jMenuBar1.add(jMenu6);
 
@@ -761,26 +774,37 @@ public class FormFornecedor extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // Botão Salvar
-        
+         
             Fornecedor obj = new Fornecedor();
-            obj.setNome(txtNome.getText());
-            obj.setCnpj(txtCNPJ.getText());
-            obj.setEmail(txtEmail.getText());
-            obj.setCelular(txtCelular.getText());
-            obj.setCelular2(txtCelular2.getText());
-            obj.setCep(txtCEP.getText());
-            obj.setEndereco(txtEndereco.getText());
-            obj.setNumero(Integer.parseInt(txtNumero.getText()));
-            obj.setComplemento(txtComplemento.getText());
-            obj.setBairro(txtBairro.getText());
-            obj.setCidade(txtCidade.getText());
-            obj.setEstado(cmbEstado.getSelectedItem().toString());
-            
-            FornecedorDAO dao = new FornecedorDAO();
-            dao.cadastrarFornecedor(obj);
-        
-        new Utilitario().limpaTela(painelCadastroFornecedores);
-        
+            if(txtNome.getText().isEmpty() || txtCNPJ.getText().isEmpty() || txtEmail.getText().isEmpty() || txtTelefone.getText().isEmpty() ||
+                    txtEndereco.getText().isEmpty() || txtNumero.getText().isEmpty() || txtBairro.getText().isEmpty() || txtCidade.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Você precisa preencher os campos obrigatórios");
+            }
+            else{
+                obj.setNome(txtNome.getText());
+                obj.setCnpj(txtCNPJ.getText());
+                obj.setEmail(txtEmail.getText());
+                obj.setCelular(txtTelefone.getText());
+                obj.setCelular2(txtCelular2.getText());
+                obj.setCep(txtCEP.getText());
+                obj.setEndereco(txtEndereco.getText());
+                obj.setNumero(Integer.parseInt(txtNumero.getText()));
+                obj.setComplemento(txtComplemento.getText());
+                obj.setBairro(txtBairro.getText());
+                obj.setCidade(txtCidade.getText());
+                obj.setEstado(cmbEstado.getSelectedItem().toString());
+
+                FornecedorDAO dao = new FornecedorDAO();
+                Fornecedor cnpjCadastrados = dao.consultaPorCnpj(obj.getCnpj());
+                if(obj.getCnpj().equals(cnpjCadastrados.getCnpj())){
+                    JOptionPane.showMessageDialog(null, "Esse CNPJ já está cadastrado");
+                }
+                else{
+                    dao.cadastrarFornecedor(obj);
+                    new Utilitario().limpaTela(painelCadastroFornecedores);
+                }
+            }
+
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
@@ -811,29 +835,34 @@ public class FormFornecedor extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // Botão Editar
-        
-           Fornecedor obj = new Fornecedor();
-            obj.setNome(txtNome.getText());
-            obj.setCnpj(txtCNPJ.getText());
-            obj.setEmail(txtEmail.getText());
-            obj.setCelular(txtCelular.getText());
-            obj.setCelular2(txtCelular2.getText());
-            obj.setCep(txtCEP.getText());
-            obj.setEndereco(txtEndereco.getText());
-            obj.setNumero(Integer.parseInt(txtNumero.getText()));
-            obj.setComplemento(txtComplemento.getText());
-            obj.setBairro(txtBairro.getText());
-            obj.setCidade(txtCidade.getText());
-            obj.setEstado(cmbEstado.getSelectedItem().toString());
             
-            obj.setId(Integer.parseInt(txtCodigo.getText()));
-            
-            FornecedorDAO dao = new FornecedorDAO();
-            dao.alterarFornecedor(obj);
-        
-        
-        new Utilitario().limpaTela(painelCadastroFornecedores);
-        
+            if(txtNome.getText().isEmpty() || txtCNPJ.getText().isEmpty() || txtEmail.getText().isEmpty() || txtTelefone.getText().isEmpty() ||
+                    txtEndereco.getText().isEmpty() || txtNumero.getText().isEmpty() || txtBairro.getText().isEmpty() || txtCidade.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Você precisa preencher os campos obrigatórios");
+            }
+            else{
+                Fornecedor obj = new Fornecedor();
+                obj.setNome(txtNome.getText());
+                obj.setCnpj(txtCNPJ.getText());
+                obj.setEmail(txtEmail.getText());
+                obj.setCelular(txtTelefone.getText());
+                obj.setCelular2(txtCelular2.getText());
+                obj.setCep(txtCEP.getText());
+                obj.setEndereco(txtEndereco.getText());
+                obj.setNumero(Integer.parseInt(txtNumero.getText()));
+                obj.setComplemento(txtComplemento.getText());
+                obj.setBairro(txtBairro.getText());
+                obj.setCidade(txtCidade.getText());
+                obj.setEstado(cmbEstado.getSelectedItem().toString());
+
+                obj.setId(Integer.parseInt(txtCodigo.getText()));
+
+                FornecedorDAO dao = new FornecedorDAO();
+                dao.alterarFornecedor(obj);
+
+
+                new Utilitario().limpaTela(painelCadastroFornecedores);
+            }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -883,7 +912,7 @@ public class FormFornecedor extends javax.swing.JFrame {
             txtNome.setText(obj.getNome());
             txtCNPJ.setText(obj.getCnpj());
             txtEmail.setText(obj.getEmail());
-            txtCelular.setText(obj.getCelular());
+            txtTelefone.setText(obj.getCelular());
             txtCelular2.setText(obj.getCelular2());
             txtCEP.setText(obj.getCep());
             txtEndereco.setText(obj.getEndereco());
@@ -910,7 +939,7 @@ public class FormFornecedor extends javax.swing.JFrame {
         txtNome.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 1).toString());
         txtCNPJ.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 2).toString());
         txtEmail.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 3).toString());
-        txtCelular.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 4).toString());
+        txtTelefone.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 4).toString());
         txtCelular2.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 5).toString());
         txtCEP.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 6).toString());
         txtEndereco.setText(tabelaFornecedores.getValueAt(tabelaFornecedores.getSelectedRow(), 7).toString());
@@ -1065,6 +1094,11 @@ public class FormFornecedor extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        FormControleEstoque controle = new FormControleEstoque();
+        controle.setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // Abrir Ponto de Vendas
 
@@ -1086,7 +1120,6 @@ public class FormFornecedor extends javax.swing.JFrame {
 
         FormTotalVendaPorData telaDetalheVendas = new FormTotalVendaPorData();
         telaDetalheVendas.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
@@ -1166,6 +1199,7 @@ public class FormFornecedor extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTabbedPane jTabbedPane1;
@@ -1177,7 +1211,6 @@ public class FormFornecedor extends javax.swing.JFrame {
     private javax.swing.JTextField txtBairro;
     private javax.swing.JFormattedTextField txtCEP;
     private javax.swing.JFormattedTextField txtCNPJ;
-    private javax.swing.JFormattedTextField txtCelular;
     private javax.swing.JFormattedTextField txtCelular2;
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtCodigo;
@@ -1189,5 +1222,6 @@ public class FormFornecedor extends javax.swing.JFrame {
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNumero;
     private javax.swing.JTextField txtPesquisa;
+    private javax.swing.JFormattedTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
 }

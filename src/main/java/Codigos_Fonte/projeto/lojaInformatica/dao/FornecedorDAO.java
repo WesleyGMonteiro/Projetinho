@@ -215,7 +215,7 @@ public class FornecedorDAO {
         try {
             
             //1 Passo Criar o comando sql, organizar e executar
-            String sql = "select * from tb_fornecedores where cpf = ?";
+            String sql = "select * from tb_fornecedores where cnpj = ?";
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setString(1, cnpj);
             

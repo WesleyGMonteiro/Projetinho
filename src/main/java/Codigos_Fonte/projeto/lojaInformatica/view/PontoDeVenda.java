@@ -24,7 +24,7 @@ public class PontoDeVenda extends javax.swing.JFrame {
 
     Cliente objc = new Cliente();
     double total, preco, subtotal;
-    int qtd, idVendaItem;
+    int qtd, idVendaItem, qtd_atual;
     
     DefaultTableModel carrinho;
     /**
@@ -83,6 +83,7 @@ public class PontoDeVenda extends javax.swing.JFrame {
         jMenu6 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -213,6 +214,7 @@ public class PontoDeVenda extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados do Produto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 13), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel3.setForeground(new java.awt.Color(0, 0, 0));
 
+        txtDescricao.setEditable(false);
         txtDescricao.setBackground(new java.awt.Color(255, 255, 255));
         txtDescricao.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         txtDescricao.setForeground(new java.awt.Color(0, 0, 0));
@@ -224,6 +226,11 @@ public class PontoDeVenda extends javax.swing.JFrame {
         txtQtd.setBackground(new java.awt.Color(255, 255, 255));
         txtQtd.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         txtQtd.setForeground(new java.awt.Color(0, 0, 0));
+        txtQtd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQtdKeyTyped(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
@@ -242,9 +249,15 @@ public class PontoDeVenda extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Código:");
 
+        txtPreco.setEditable(false);
         txtPreco.setBackground(new java.awt.Color(255, 255, 255));
         txtPreco.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         txtPreco.setForeground(new java.awt.Color(0, 0, 0));
+        txtPreco.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecoKeyTyped(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
@@ -456,7 +469,7 @@ public class PontoDeVenda extends javax.swing.JFrame {
         jMenu6.setText("Produtos");
 
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacotes.png"))); // NOI18N
-        jMenuItem2.setText("Controle de Estoque");
+        jMenuItem2.setText("Cadastrar Produto");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -472,6 +485,15 @@ public class PontoDeVenda extends javax.swing.JFrame {
             }
         });
         jMenu6.add(jMenuItem5);
+
+        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacotes.png"))); // NOI18N
+        jMenuItem8.setText("Controle de Estoque");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem8);
 
         jMenuBar1.add(jMenu6);
 
@@ -554,7 +576,7 @@ public class PontoDeVenda extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 18, Short.MAX_VALUE))
@@ -612,40 +634,41 @@ public class PontoDeVenda extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // Botão adicionar ao carrinho
-        int qtd_atual = 0;
-        qtd = Integer.parseInt(txtQtd.getText());
-        preco = Double.parseDouble(txtPreco.getText());
-        
-        subtotal = qtd * preco;
-        
-        total += subtotal;
-        
-        txtTotal.setText(String.valueOf(total));
-        
-        ProdutoDAO daoproduct = new ProdutoDAO();
-        int qtd_Estoque = daoproduct.retornaEstoqueAtual(Integer.parseInt(txtCodigo.getText()));
-        qtd_atual += qtd_Estoque;
-        
-        if(qtd > qtd_Estoque){
-           JOptionPane.showMessageDialog(null, "Estoque insulficiente para venda");
-           
+        if(txtNome.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Você precisa digitar um CPF para cadastrar a venda!");
         }
         else{
-            //Adicionar Venda na tabela
-            carrinho = (DefaultTableModel)tbItens.getModel();
-        
-            carrinho.addRow(new Object[]{
-            txtCodigo.getText(),
-            txtDescricao.getText(),
-            txtQtd.getText(),
-            txtPreco.getText(),
-            subtotal,
-            idVendaItem++
-            }); 
-            
-            qtd_atual -= qtd;
-            
-            new Utilitario().limpaTela(jPanel3);
+            qtd = Integer.parseInt(txtQtd.getText());
+            preco = Double.parseDouble(txtPreco.getText());
+
+            subtotal = qtd * preco;
+
+            total += subtotal;
+
+            txtTotal.setText(String.valueOf(total));
+
+            ProdutoDAO daoproduct = new ProdutoDAO();
+            int qtd_Estoque = daoproduct.retornaEstoqueAtual(Integer.parseInt(txtCodigo.getText()));
+
+            if((qtd_Estoque <= qtd) || (qtd <= 0)) {
+               JOptionPane.showMessageDialog(null, "Estoque insulficiente para venda");
+
+            }
+            else{
+                //Adicionar Venda na tabela
+                carrinho = (DefaultTableModel)tbItens.getModel();
+
+                carrinho.addRow(new Object[]{
+                txtCodigo.getText(),
+                txtDescricao.getText(),
+                txtQtd.getText(),
+                txtPreco.getText(),
+                subtotal,
+                }); 
+
+                new Utilitario().limpaTela(jPanel3);
+            }
+            qtd_atual += qtd;
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -656,9 +679,8 @@ public class PontoDeVenda extends javax.swing.JFrame {
         telap.cliente = objc;
         telap.setVisible(true);
         telap.carrinho = carrinho;
-        
+
         this.dispose();
-               
     }//GEN-LAST:event_btnPagamentoActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -674,19 +696,16 @@ public class PontoDeVenda extends javax.swing.JFrame {
         int qtd_Estoque = daoproduct.retornaEstoqueAtual(Integer.parseInt(txtCodigo.getText()));
         
         if(qtd == qtd ){
-            System.out.println("Para aqui?");
+
            //Remover Item da tabela
             carrinho = (DefaultTableModel)tbItens.getModel();
-            System.out.println("Para aqui?");
             carrinho.removeRow(tbItens.getSelectedRow());
-            System.out.println("Para aqui?");
             subtotal = qtd * preco;
 
             total -= subtotal;
 
             txtTotal.setText(String.valueOf(total));
 
-//            daoproduct.adicionarEstoque(Integer.parseInt(txtCodigo.getText()), qtd_Estoque);
 
             new Utilitario().limpaTela(jPanel3); 
         }
@@ -755,6 +774,11 @@ public class PontoDeVenda extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        FormControleEstoque controle = new FormControleEstoque();
+        controle.setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // Abrir Ponto de Vendas
 
@@ -776,12 +800,27 @@ public class PontoDeVenda extends javax.swing.JFrame {
 
         FormTotalVendaPorData telaDetalheVendas = new FormTotalVendaPorData();
         telaDetalheVendas.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
         this.dispose();
     }//GEN-LAST:event_jMenu7MouseClicked
+
+    private void txtQtdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQtdKeyTyped
+        char c = evt.getKeyChar();
+        if ( ((c < '0') || (c > '9')) && (c !=KeyEvent.VK_BACK_SPACE)) {
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Coloque apenas números positivos!");
+        }
+    }//GEN-LAST:event_txtQtdKeyTyped
+
+    private void txtPrecoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecoKeyTyped
+        char c = evt.getKeyChar();
+        if ( ((c < '0') || (c > '9')) && (c !=KeyEvent.VK_BACK_SPACE)) {
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Coloque apenas números positivos!");
+        }
+    }//GEN-LAST:event_txtPrecoKeyTyped
 
     /**
      * @param args the command line arguments
@@ -846,6 +885,7 @@ public class PontoDeVenda extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

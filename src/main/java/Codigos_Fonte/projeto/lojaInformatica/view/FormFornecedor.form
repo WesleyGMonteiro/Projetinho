@@ -81,7 +81,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/pacotes.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Controle de Estoque"/>
+                <Property name="text" type="java.lang.String" value="Cadastrar Produto"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
@@ -96,6 +96,17 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem5ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/pacotes.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Controle de Estoque"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem8ActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -316,16 +327,15 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="txtNome" min="-2" pref="485" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Component id="jLabel21" min="-2" pref="45" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="txtDataAtual" min="-2" pref="115" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Component id="txtCodigo" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <EmptySpace pref="1092" max="32767" attributes="0"/>
+                                      <EmptySpace pref="1097" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -334,22 +344,24 @@
                                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jLabel4" max="32767" attributes="0"/>
                                       <Component id="jLabel7" max="32767" attributes="0"/>
-                                      <Component id="jLabel10" min="-2" pref="48" max="-2" attributes="0"/>
+                                      <Component id="jLabel10" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtCNPJ" linkSize="7" min="-2" pref="120" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                              <Component id="txtCEP" linkSize="7" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                              <Component id="txtEmail" linkSize="7" min="-2" pref="300" max="-2" attributes="0"/>
+                                          <Component id="txtCEP" linkSize="7" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
+                                          <Component id="txtEmail" linkSize="7" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txtCNPJ" linkSize="7" min="-2" pref="120" max="-2" attributes="0"/>
+                                                  <Component id="txtBairro" linkSize="7" min="-2" pref="300" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
-                                          <Component id="txtBairro" linkSize="7" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="107" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="1" attributes="0">
                                               <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
@@ -363,14 +375,18 @@
                                               </Group>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="txtCelular" linkSize="7" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="txtTelefone" linkSize="7" alignment="1" max="32767" attributes="0"/>
                                                   <Component id="txtEndereco" linkSize="7" alignment="1" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
                                   </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="txtNome" min="-2" pref="485" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace pref="51" max="32767" attributes="0"/>
+                              <EmptySpace pref="45" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel9" min="-2" pref="70" max="-2" attributes="0"/>
@@ -395,7 +411,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="34" max="32767" attributes="0"/>
+                      <EmptySpace pref="29" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -434,7 +450,7 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtCelular" linkSize="11" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                                  <Component id="txtTelefone" linkSize="11" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                                   <Component id="jLabel5" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                                   <Component id="txtCelular2" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel6" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -501,7 +517,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Nome:"/>
+                <Property name="text" type="java.lang.String" value="*Nome:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtNome">
@@ -525,7 +541,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="E-mail:"/>
+                <Property name="text" type="java.lang.String" value="*E-mail:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtEmail">
@@ -549,10 +565,10 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Telefone:"/>
+                <Property name="text" type="java.lang.String" value="*Telefone:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="txtCelular">
+            <Component class="javax.swing.JFormattedTextField" name="txtTelefone">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -608,7 +624,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Endere&#xe7;o:"/>
+                <Property name="text" type="java.lang.String" value="*Endere&#xe7;o:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtEndereco">
@@ -635,7 +651,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="N&#xfa;mero:"/>
+                <Property name="text" type="java.lang.String" value="*N&#xfa;mero:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtNumero">
@@ -662,7 +678,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Bairro:"/>
+                <Property name="text" type="java.lang.String" value="*Bairro:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtBairro">
@@ -689,7 +705,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Cidade:"/>
+                <Property name="text" type="java.lang.String" value="*Cidade:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtCidade">
@@ -801,7 +817,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="CNPJ:"/>
+                <Property name="text" type="java.lang.String" value="*CNPJ:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="txtCNPJ">

@@ -135,6 +135,7 @@ public class FormCliente extends javax.swing.JFrame {
         jMenu6 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -224,7 +225,7 @@ public class FormCliente extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Celular:");
+        jLabel5.setText("*Celular:");
 
         txtCelular.setBackground(new java.awt.Color(255, 255, 255));
         txtCelular.setForeground(new java.awt.Color(0, 0, 0));
@@ -757,7 +758,7 @@ public class FormCliente extends javax.swing.JFrame {
         jMenu6.setText("Produtos");
 
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacotes.png"))); // NOI18N
-        jMenuItem2.setText("Controle de Estoque");
+        jMenuItem2.setText("Cadastrar Produto");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -773,6 +774,15 @@ public class FormCliente extends javax.swing.JFrame {
             }
         });
         jMenu6.add(jMenuItem5);
+
+        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pacotes.png"))); // NOI18N
+        jMenuItem8.setText("Controle de Estoque");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem8);
 
         jMenuBar1.add(jMenu6);
 
@@ -1244,6 +1254,11 @@ public class FormCliente extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        FormControleEstoque controle = new FormControleEstoque();
+        controle.setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // Abrir Ponto de Vendas
 
@@ -1265,7 +1280,6 @@ public class FormCliente extends javax.swing.JFrame {
 
         FormTotalVendaPorData telaDetalheVendas = new FormTotalVendaPorData();
         telaDetalheVendas.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
@@ -1353,6 +1367,7 @@ public class FormCliente extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTabbedPane jTabbedPane1;
